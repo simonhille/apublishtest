@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "test"
+description = """
+           Atest
+"""
+version = "1.2.3"
+readme = "README.md"
+authors = [
+    {name = "Simon Hans Hille", email="simon.hille@physik.uzh.ch"},
+]
+maintainers = [
+    {name = "Simon Hans Hille", email="simon.hille@physik.uzh.ch"},
+]
+
+license = "MIT"
+
+
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=25.1.0",
+    "docformatter",
+]
+docs = [
+    "sphinx",
+    "sphinx_rtd_theme",
+    "sphinx-autodoc-typehints",
+    "myst_nb",
+    "ghp-import",
+]
+
+
