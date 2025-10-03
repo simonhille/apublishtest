@@ -45,4 +45,4 @@ jobs:
       - name: create gh-pages branch
         run: |
           pip install ghp-import
-          ghp-import -n -p -f docs/_build/html
+          ghp-import -n -p -f docs/build/html
