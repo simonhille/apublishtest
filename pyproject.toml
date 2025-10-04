@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
@@ -7,7 +7,6 @@ name = "test"
 description = """
            Atest
 """
-version = "1.2.3"
 readme = "README.md"
 authors = [
     {name = "Simon Hans Hille", email="simon.hille@physik.uzh.ch"},
@@ -36,5 +35,12 @@ docs = [
     "myst_nb",
     "ghp-import",
 ]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/temfpy/_version.py"
+pattern = "v(?P<version>.*)"
 
 
