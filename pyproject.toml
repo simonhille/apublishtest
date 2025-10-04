@@ -44,6 +44,5 @@ source = "vcs"
 version-file = "src/apublishtest/_version.py"
 
 [tool.hatch.version.raw-options]
-version_scheme = "guess-next-dev"
+version_scheme = "no-guess-dev"
 local_scheme = "no-local-version"
-fallback_version = "0.0.0"
