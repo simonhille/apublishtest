@@ -3,7 +3,7 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "test"
+name = "apublishtest"
 description = """
            Atest
 """
@@ -41,7 +41,7 @@ docs = [
 source = "vcs"
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/test/_version.py"
+version-file = "src/apublishtest/_version.py"
 
 [tool.hatch.version.raw-options]
 version_scheme = "guess-next-dev"

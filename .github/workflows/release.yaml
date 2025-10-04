@@ -4,8 +4,7 @@
 name: Release
 
 on:
-  release:
-    types: [published]
+  push
 
 # no permissions to the token at global level
 permissions: {} 
