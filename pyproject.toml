@@ -41,7 +41,7 @@ docs = [
 source = "vcs"
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/temfpy/_version.py"
+version-file = "src/test/_version.py"
 pattern = "v(?P<version>.*)"
 
 
