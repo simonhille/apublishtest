@@ -42,7 +42,6 @@ source = "vcs"
 
 [tool.hatch.build.hooks.vcs]
 version-file = "src/apublishtest/_version.py"
-pattern = "v(?P<version>.*)"
 
 [tool.hatch.version.raw-options]
 local_scheme = "no-local-version"
