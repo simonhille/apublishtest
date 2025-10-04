@@ -4,7 +4,12 @@
 name: Release
 
 on:
-  push
+  push:
+    branches:
+      - main
+  release:
+    types: 
+      - published
 
 # no permissions to the token at global level
 permissions: {} 
@@ -57,8 +62,9 @@ jobs:
   # ------------------------------------
   # Publish to TestPyPI (on master push)
   # ------------------------------------
-  to_test_pypi:
+  to_test_pypi_1:
       name: Publish to TestPyPI
+      if: github.event_name == 'push'
       needs: [build_package]
       runs-on: ubuntu-latest
       environment:
@@ -76,23 +82,25 @@ jobs:
           with:
             repository-url: https://test.pypi.org/legacy/
             verbose: true
+
+  to_test_pypi_2:
+    name: Publish to TestPyPI
+    if: github.event_name == 'release'
+    needs: [build_package]
+    runs-on: ubuntu-latest
+    environment:
+      name: test-pypi
+      url: https://test.pypi.org/project/apublishtest/
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
+        with:
+          name: dist-ubuntu-latest
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          verbose: true
   
-  # -----------------------------
-  # Publish to PyPI (on release)
-  # -----------------------------
-  # to_pypi:
-  #   name: Publish to PyPI
-  #   needs: [build_package]
-  #   runs-on: ubuntu-latest
-  #   environment:
-  #     name: pypi
-  #     url: https://pypi.org/project/temfpy/
-  #   permissions:
-  #     contents: read
-  #     id-token: write
-  #   steps:
-  #     - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
-  #       with:
-  #         name: dist-ubuntu-latest
-  #         path: dist/
-  #     - uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
