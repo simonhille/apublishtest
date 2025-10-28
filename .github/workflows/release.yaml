@@ -1,5 +1,5 @@
 # Publish a new release to either TestPyPI or PyPI
-# push to main -> TestPyPI
+# push to main or tag -> TestPyPI
 # create a new release -> push to PyPI
 name: Release
 
